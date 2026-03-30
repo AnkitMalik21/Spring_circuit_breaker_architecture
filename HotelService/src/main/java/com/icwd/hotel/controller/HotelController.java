@@ -8,13 +8,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/hotel")
 @RequiredArgsConstructor
 public class HotelController {
 
-    private HotelService hotelService;
+    private final HotelService hotelService;
 
     //create
     @PostMapping
@@ -31,5 +32,8 @@ public class HotelController {
 
     //getOne
     @GetMapping("/{id}")
-    public ResponseEntity<Hotel> getHotelById(@PathVariable )
+    public ResponseEntity<Hotel> getHotelById(@PathVariable String id){
+        Hotel hotel = hotelService.get(id);
+        return ResponseEntity.status(HttpStatus.OK).body(hotel);
+    }
 }
