@@ -2,8 +2,8 @@ server:
   port: 8081
 
 spring:
-  application:
-    name: UserService
+#  application:
+#    name: UserService
   datasource:
     url: jdbc:postgresql://localhost:5432/user
     username: postgres
@@ -20,12 +20,18 @@ spring:
 
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
+  config:
+    import: "optional:configserver:http://localhost:8085"
 
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    fetch-registry: true
-    register-with-eureka: true
-    service-url:
-      defaultZone:  http://localhost:8761/eureka
+# 'optional:' means the app won't crash if it can't reach the config server immediately
+# 'configserver:' is a required, built-in keyword that tells Spring Boot talking to a Spring Cloud Config Server
+
+
+#eureka:
+#  instance:
+#    prefer-ip-address: true
+#  client:
+#    fetch-registry: true
+#    register-with-eureka: true
+#    service-url:
+#      defaultZone:  http://localhost:8761/eureka
