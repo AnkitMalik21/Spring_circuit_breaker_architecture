@@ -10,3 +10,4 @@ spring:
         git:
           uri: https://github.com/AnkitMalik21/Spring_circuit_breaker_architecture.git
           clone-on-start: true
+          search-paths: ConfigRepo
