@@ -5,6 +5,9 @@ spring:
   application:
     name: ApiGateway
 
+  config:
+    import: "optional:configserver:http://localhost:8085"
+
   cloud:
     gateway:
       routes:
@@ -24,11 +27,11 @@ spring:
           predicates:
             - Path=/api/rating/**     # ✅ 2 spaces under predicates
 
-eureka:
-  instance:
-    prefer-ip-address: false
-  client:
-    fetch-registry: true
-    register-with-eureka: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
+#eureka:
+#  instance:
+#    prefer-ip-address: false
+#  client:
+#    fetch-registry: true
+#    register-with-eureka: true
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka/

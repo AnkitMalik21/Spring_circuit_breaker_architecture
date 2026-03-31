@@ -8,6 +8,9 @@ spring:
     mongodb:
       uri: mongodb://localhost:27017/microservices
 
+  config:
+    import: "optional:configserver:http://localhost:8085"
+
 eureka:
   instance:
     prefer-ip-address: true
