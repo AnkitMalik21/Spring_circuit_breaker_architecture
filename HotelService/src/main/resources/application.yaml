@@ -16,7 +16,7 @@ spring:
     show-sql: true
 
 eureka:
-  instances:
+  instance:
     prefer-ip-address: true
   client:
     fetch-registry: true
