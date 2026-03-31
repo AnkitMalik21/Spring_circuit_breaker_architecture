@@ -23,9 +23,9 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody UserRequest userRequest){
-        User user = userService.saveUser(userRequest);
-        return ResponseEntity.status(HttpStatus.CREATED).body(user);
+    public ResponseEntity<User> createUser(@RequestBody User user){
+        User user1 = userService.saveUser(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(user1);
     }
 
     @GetMapping
@@ -35,21 +35,27 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Long id){
+    public ResponseEntity<User> getUserById(@PathVariable String id){
         User user = userService.getUser(id);
         return ResponseEntity.status(HttpStatus.OK).body(user);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id,@RequestBody UserRequest userRequest){
+    public ResponseEntity<User> updateUser(@PathVariable String id,@RequestBody UserRequest userRequest){
         User user = userService.updateUser(id,userRequest);
         return ResponseEntity.status(HttpStatus.OK).body(user);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteUser(@PathVariable Long id){
+    public ResponseEntity<String> deleteUser(@PathVariable String id){
         String str = userService.deleteUser(id);
         return ResponseEntity.status(HttpStatusCode.valueOf(200)).body(str);
     }
 
 }
+
+
+/** Feign Client
+ * the feign is a declarative Http web client developed by netflix
+ * if you want to use Feign, create an interface and annotate it.
+ * */

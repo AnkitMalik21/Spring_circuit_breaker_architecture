@@ -10,17 +10,17 @@ public interface UserService {
     //user operation
 
     //create
-    User saveUser(UserRequest userRequest);
+    User saveUser(User user);
 
     //get all User
     List<User> getAllUser();
 
-    User getUser(Long userId);
+    User getUser(String userId);
 
 
     //update
-    User updateUser(Long userId, UserRequest request);
+    User updateUser(String userId, UserRequest request);
 
     //delete
-    String deleteUser(Long userId);
+    String deleteUser(String userId);
 }
